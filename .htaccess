@@ -1,0 +1,44 @@
+Options +FollowSymLinks
+
+RewriteEngine On
+
+#Redirecionamento HTTPS
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ index.php [NC,L]
+#RewriteRule ^(.*)$ index.php [NC,L]
+
+#define o arquivo index.php como página principal
+DirectoryIndex index.php
+
+# Bloqueia a listagem de diretórios.
+Options All -Indexes
+
+<Files *.*>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files index.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files *.css>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files *.png>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files *.ico>
+    Order Allow,Deny
+    Allow from all
+</Files>

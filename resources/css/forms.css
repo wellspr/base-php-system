@@ -1,0 +1,29 @@
+label{
+    font-size: 0.8rem;
+}
+
+.formfield{
+    margin: 15px;
+    padding: 15px;
+    border: solid gray 1px;
+    border-radius: 5px;
+}
+
+.formsubfield{
+    margin: 15px;
+}
+
+input{
+    margin: 5px;
+    padding: 3px;
+}
+
+.login{
+    text-align: center;
+}
+
+.login > .formfield {
+    width: 300px;
+    margin: auto;
+    padding: 30px;
+}

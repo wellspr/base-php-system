@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/resources/css/forms.css">
+
+<!-- <form class="login" action="/auth/loginValidate" method="post"> -->
+<form class="login" action="" method="post">
+
+    <h1>Login</h1>
+
+    <div class="formfield">
+
+        <label for="username">Username or Email</label><br>
+        <input type="text" name="username"><br>
+
+        <label for="password">Password</label><br>
+        <input type="password" name="password"><br>
+
+        <input type="submit" name="submit" value="Entrar">
+
+        ou
+
+        <input type="button" name="register" value="Registrar">
+
+    </div>
+
+</form>
+
+<script>
+    document.querySelector("input[name='register']").addEventListener("click", function(){
+        location.assign("/user/register");
+    });
+</script>
+
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/auth/loginValidate.php";
