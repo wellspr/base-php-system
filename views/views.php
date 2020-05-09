@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/partials/head.php")?>
+    <head>
 
-<body>
+        <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/partials/head.php")?>
 
-<?php
+    </head>
 
-    include_once($_SERVER['DOCUMENT_ROOT'] . "/menu/menu.php");
+    <body>
 
-    $file = $contentDirectory . "/" . $contentFileName . ".php";
-    if (file_exists($file)) {
-        include_once $file;
-    }
+        <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/partials/body.php")?>
 
-?>
-
-</body>
+    </body>
 
 </html>

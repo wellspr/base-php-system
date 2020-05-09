@@ -21,9 +21,9 @@ echo "<br>";
 echo "Listando alguns usuários: <br><br>";
 
 $queryList = [
-    ['username' => 'wells'],
-    ['username' => 'picapau'],
-    ['username' => 'nico']
+    ['username' => 'admin'],
+    ['username' => 'paulowells@gmail.com'],
+    ['username' => 'lrdwells@gmail.com']
 ];
 
 $foundUsers = $user->readMany($queryList);
@@ -33,7 +33,9 @@ $foundUsers = $user->readMany($queryList);
         foreach ($foundUsers as $user) {
 
             displayObject($user);
+            echo "<br><br><br>";
 
         }
+
 
     }

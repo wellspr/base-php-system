@@ -1,6 +1,5 @@
 <h1>Read User Info</h1>
 
-
 <p>Método readOne</p>
 
 <?php
@@ -22,10 +21,14 @@ $user->define();
 echo "Listando um usuário apenas: <br><br>";
 
 
-$filter = ['username' => 'prwells'];
+$filter = ['username' => 'admin'];
 
 
 $foundUser = $user->readOne($filter);
+
+print_r($foundUser);
+
+// print_r($foundUser->name);
 
     if ($foundUser) {
 

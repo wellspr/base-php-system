@@ -1,32 +1,86 @@
-<link rel="stylesheet" href="/resources/css/forms.css">
 
-<!-- <form class="login" action="/auth/loginValidate" method="post"> -->
-<form class="login" action="" method="post">
+<!-- <div class="login-box-container">
 
-    <h1>Login</h1>
+    <div class="login-box"> -->
 
-    <div class="formfield">
+        <form class="login-form" action="#" method="post">
 
-        <label for="username">Username or Email</label><br>
-        <input type="text" name="username"><br>
+            <h1 class="login-text">Login to your account</h1>
 
-        <label for="password">Password</label><br>
-        <input type="password" name="password"><br>
+            <div class="login-field">
 
-        <input type="submit" name="submit" value="Entrar">
+                <div class="login-subfield username">
+                    <label for="username">Username or Email</label>
+                    <input class="text-input bg-img" id="username" type="text" name="username" placeholder="Username or Email">
+                </div>
 
-        ou
+                <div class="login-subfield password">
+                    <label for="password">Password</label>
+                    <input class="text-input bg-img" id="password" type="password" name="password" placeholder="Password">
+                </div>
 
-        <input type="button" name="register" value="Registrar">
+                <div class="rememberme">
+                    <input type='checkbox' name='remember-me' id='rememberme'>
+                    <label for='rememberme'>Remember me</label>
+                </div>
 
+                <div class="login-buttons">
+                    <button class="button" type="submit" name="submit" value="Sign In">Sign In</button>
+                </div>
+
+                <div class="comp">
+                    <span class="comp-text forgot">
+                        <a href="#">Forgot your password?</a>
+                    </span>
+                    <span class="comp-text signup">
+                        <a href="/user/register">Sign Up</a>
+                    </span>
+                </div>
+
+            </div>
+
+        </form>
+
+    <!-- </div> -->
+
+    <div class="attribution">
+        <a href="https://icons8.com" target="_blank">Icons by Icons8</a>
     </div>
 
-</form>
+<!-- </div> -->
 
-<script>
+
+
+
+
+    <!-- <form class="login-form" action="" method="post">
+
+        <h1 class="login-text">Login</h1>
+
+        <div class="formfield">
+
+            <div class="form-subfield username">
+                <label for="username">Username or Email</label><br>
+                <input class="text-input" id="username" type="text" name="username"><br>
+            </div>
+
+            <div class="form-subfield password">
+                <label for="password">Password</label><br>
+                <input class="text-input" id="password" type="password" name="password"><br>
+            </div>
+
+            <div class="form-buttons">
+                <input class="button" type="submit" name="submit" value="Entrar">
+                <span>ou</span>
+                <input class="button" type="button" name="register" value="Registrar">
+            </div>
+
+        </div>
+
+    </form> -->
+
+<!-- <script>
     document.querySelector("input[name='register']").addEventListener("click", function(){
         location.assign("/user/register");
     });
-</script>
-
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . "/auth/loginValidate.php";
+</script> -->

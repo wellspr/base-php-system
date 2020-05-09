@@ -47,6 +47,8 @@ foreach ($foundUsers as $row) {
 
 foreach ($users as $user) {
 
+    echo "<br><br> <hr>";
+
     echo "<span class='loginSelect'> Username: " . $user['username']. "</span><br>";
     echo "<span class='loginSelect'> Email: " . $user['email']. "</span><br>";
     echo "<span class='loginSelect'> ID: " . $user['id']. "</span>";
@@ -93,7 +95,6 @@ foreach ($users as $user) {
 
     echo "</table></tr>";
 
-    echo "<hr>";
 }
 // Fim da listagem dos usernames dos usuários
 

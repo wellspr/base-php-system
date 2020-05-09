@@ -13,6 +13,7 @@ $app -> setRoute("/", function($req, $res) {
     ]);
 });
 
+
 // Rotas para tratamento de dados de usuário
 $app -> setRoute("/user/:id", function($req, $res) {
 
@@ -273,21 +274,31 @@ $app -> setRoute("/http/:id", function($req, $res) {
 });
 
 // Rotas para testes no MongoDB
-$app -> setRoute("/db/:id1/:id2", function($req, $res) {
+
+// DB Access testing
+$app -> setRoute("/db-access", function($req, $res) {
+    $res -> render("views", [
+        'title' => 'Home',
+        'contentDirectory' => "content/db/user",
+        'contentFileName' => "dbAccess"
+    ]);
+});
+
+
+$app -> setRoute("/db/:id1", function($req, $res) {
 
     $id1 = $req->params("id1");
-    $id2 = $req->params("id2");
 
     // Access to /db
-    if ($id1==='connect'&&$id2==='') {
+    if ($id1==='connect') {
 
-        $res -> render("views", [
-            'title' => 'DB Connection',
-            'contentDirectory' => "content/db",
-            'contentFileName' => "connect"
-        ]);
+            $res -> render("views", [
+                'title' => 'DB Connection',
+                'contentDirectory' => "content/db",
+                'contentFileName' => "connect"
+            ]);
 
-    } else if ($id1==='testClasses'&&$id2==='') {
+    } else if ($id1==='testClasses') {
 
         $res -> render("views", [
             'title' => 'DB test Classes',
@@ -296,8 +307,26 @@ $app -> setRoute("/db/:id1/:id2", function($req, $res) {
         ]);
 
     }
+
+});
+
+$app -> setRoute("/db/:id1/:id2", function($req, $res) {
+
+    $id1 = $req->params("id1");
+    $id2 = $req->params("id2");
+
+    // Access to /db
+    if ($id1==='connect'&&$id2==='') {
+
+        $res -> redirect("/db/connect");
+
+    } else if ($id1==='testClasses'&&$id2==='') {
+
+        $res -> redirect("/db/testClasses");
+
+    }
     // Access to /db/user
-    else if ($id1==='user'&&$id2==='readOne') {
+    if ($id1==='user'&&$id2==='readOne') {
 
         $res -> render("views", [
             'title' => 'Read User Info',
@@ -317,7 +346,7 @@ $app -> setRoute("/db/:id1/:id2", function($req, $res) {
 
 });
 
-
+// Info about password hashing
 $app->setRoute("/passwordHash", function($req, $res) {
 
     $res->render('views', [
@@ -328,8 +357,7 @@ $app->setRoute("/passwordHash", function($req, $res) {
 
 });
 
-// Rotas de teste e exemplos do que pode ser feito
-
+// Get parameters of a query.
 $app -> setRoute("/get_params", function($req, $res) {
 
     $req_uri = $req->get_request_uri();
@@ -363,16 +391,11 @@ $app -> setRoute("/get_params", function($req, $res) {
 
 });
 
-
+// Testing the 'send' method.
 $app -> setRoute("/:id", function($req, $res) {
 
 $id = $req -> params('id');
 
-    // if ($id=='') {
-    //
-    //     $res->send("Home!!!");
-    //
-    // } else
     if ($id=='hello') {
 
         $res->send("Hello!!!");
@@ -385,7 +408,7 @@ $id = $req -> params('id');
 
 });
 
-
+// A set of example routes
 $app -> setRoute("/:id1/:id2", function($req, $res) {
 
     $id1 = $req->params('id1');
@@ -400,7 +423,6 @@ $app -> setRoute("/:id1/:id2", function($req, $res) {
     }
 });
 
-
 $app -> setRoute("/testes/:id1/case/:id2", function($req, $res){
 
     $id1 = $req -> params('id1');
@@ -412,7 +434,6 @@ $app -> setRoute("/testes/:id1/case/:id2", function($req, $res){
         $res->send("Deu certo:" . '/testes/'. $id1 . '/case/' . $id2);
     }
 });
-
 
 $app -> setRoute("/teste/:id1/:id2/:id3", function($req, $res){
 

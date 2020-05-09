@@ -1,0 +1,200 @@
+
+:root {
+  --bg-color: hsl(208, 100%, 97%); /*aliceblue*/
+  --font-color: hsl(208, 50%, 50%, 0.9);
+  --link-color: hsl(208, 20%, 20%, 0.9);
+  --link-hover: hsl(208, 30%, 30%, 0.7);
+  --btn-color: hsl(208, 90%, 40%, 0.9);
+  --btn-hover: hsl(208, 90%, 40%, 0.7);
+  --theme-color: #4084bf;
+}
+
+.loginPage {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  color: var(--font-color);
+  /* background-color: var(--bg-color); */
+}
+.login-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  margin: 0;
+}
+
+/* .login-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  height: 100vh;
+  border: solid 5px;
+} */
+
+.login-box {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  /* outline: solid 1px var(--theme-color); */
+  padding: 30px 1%;
+}
+
+.login-text {
+  text-align: center;
+}
+.login-form {
+}
+.login-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  padding: 25px 8%;
+}
+label {
+  font-size: 0.8rem;
+}
+label[for="username"],
+label[for="password"] {
+  display: none;
+}
+
+.login-subfield {
+  padding: 5px;
+}
+.text-input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-style: none;
+  border-bottom: solid 2px #4084bf;
+}
+.text-input:focus {
+  outline: none;
+}
+.username {
+  background-image: url(https://img.icons8.com/material-rounded/96/4084bf/user.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 25px;
+  padding-left: 35px;
+}
+.password {
+  background-image: url(https://img.icons8.com/material-rounded/24/4084bf/key.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 25px;
+  padding-left: 35px;
+}
+
+.rememberme{
+    padding-left: 35px;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10% 10% 3%;
+}
+.button {
+  background: var(--btn-color);
+  color: #fff;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 25px;
+  border-style: none;
+  /*   box-shadow: 1px 1px 2px var(--theme-color); */
+}
+.button:hover {
+  background-color: var(--btn-hover);
+}
+
+.comp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.comp-text {
+  font-size: 0.8rem;
+  padding-top: 15px;
+}
+.forgot a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+.forgot a:hover {
+  color: var(--link-hover);
+}
+.signup a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+.signup a:hover {
+  color: var(--link-hover);
+}
+
+.attribution {
+  font-size: 0.7rem;
+  padding: 3px;
+  align-self: center;
+}
+.attribution a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+.attribution a:hover {
+  color: var(--link-hover);
+}
+
+/* Checkbox Custom Style */
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  display: none;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: default;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--theme-color);
+  background: #fff;
+  border-radius: 4px;
+  /*   box-shadow: 1px 1px 1px var(--theme-color); */
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: "\2713\0020";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  font-size: 18px;
+  line-height: 0.9;
+  color: var(--theme-color);
+  transition: all 0.2s;
+}
+
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}

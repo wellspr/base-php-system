@@ -1,10 +1,5 @@
-<style>
-    .error_message{
-        color: red;
-    }
-</style>
-
 <?php
+
 
 use DB\Access as Access;
 use User\User as User;

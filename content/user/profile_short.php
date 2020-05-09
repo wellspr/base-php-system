@@ -1,17 +1,22 @@
-<?php
+<div class="profile-short">
 
-if (isset($_SESSION['id'])) {
+    <?php
 
-    echo 'Logado como ' . $_SESSION['email'] . "<br>";
+    if (isset($_SESSION['id'])) {
 
-    echo 'Id de usuário: ' . $_SESSION['id'];
+        echo 'Logado como ' . $_SESSION['email'] . "<br>";
 
-    echo '<br>';
+        echo 'Id de usuário: ' . $_SESSION['id'];
 
-    echo '<a href="/login">Trocar Usuário</a>';
+        echo '<br>';
 
-    echo ' | ';
+        echo '<a href="/login">Trocar Usuário</a>';
 
-    echo '<a href="/logout">Log out</a>';
+        echo ' | ';
 
-}
+        echo '<a href="/logout">Log out</a>';
+
+    }
+    ?>
+    
+</div>

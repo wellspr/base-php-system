@@ -29,6 +29,7 @@ echo '$db = $client->$dbName; <br>';
 print_r($db);
 echo "<br><br>";
 
+// Here we choose the collection from database(in this case is 'users');
 $collection = $client->$dbName->users;
 
 echo '$collection = $client->test->users; <br>';
@@ -37,18 +38,19 @@ echo "<br><br>";
 
 echo "Access database item: <br><br>";
 
-$user = $collection->findOne(['username' => 'wells']);
+$user = $collection->findOne(['username' => 'admin']);
 
-echo '$user = $collection->findOne(["username" => "wells"]); <br>';
+echo '$user = $collection->findOne(["username" => "admin"]); <br>';
 print_r($user);
 echo "<br><br>";
 
-echo "Username: :" . $user->username . "<br>";
-echo "Email: " . $user->email . "<br>";
-echo "Name: " . $user->name . "<br>";
-echo "ID: " . $user->_id . "<br>";
-
-
-echo "<br><br>";
-
 var_dump($accessUri);
+
+echo "<br>********************************<br>";
+
+
+$collection = $client->$dbName->list;
+
+echo '$collection = $client->test->list; <br>';
+print_r($collection);
+echo "<br><br>";

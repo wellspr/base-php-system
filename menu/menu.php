@@ -1,6 +1,4 @@
-<nav class="navbar">
-
-<a href="/">Home</a>
+<a class="menu-link" href="/">Home</a>
 
 <?php
 
@@ -11,9 +9,9 @@
 
         echo <<<EXCERPT
 
-        | <a href="/login">Login</a>
+        <a class="menu-link" href="/login">Login</a>
 
-        | <a href="/user/register">Registrar</a>
+        <a class="menu-link" href="/user/register">Registrar</a>
 
 EXCERPT;
 
@@ -25,17 +23,11 @@ EXCERPT;
 
             echo <<<EXCERPT
 
-            <style>
-            body{
-                background-color: lightgray;
-            }
-            </style>
+            <a class="menu-link"href="/admin/panel">Painel</a>
 
-            | <a href="/admin/panel">Painel</a>
+            <a class="menu-link"href="/user/register">Registrar Usuário</a>
 
-            | <a href="/user/register">Registrar Usuário</a>
-
-            | <a href="/user/profile">Perfil</a>
+            <a class="menu-link"href="/user/profile">Perfil</a>
 
 EXCERPT;
 
@@ -45,14 +37,10 @@ EXCERPT;
 
             echo <<<EXCERPT
 
-            | <a href="/user/profile">Perfil</a>
+            <a class="menu-link" href="/user/profile">Perfil</a>
 
 EXCERPT;
 
         }
 
     }
-
-?>
-
-</nav>

@@ -1,0 +1,9 @@
+.menu-link{
+    text-decoration: none;
+    padding: 10px;
+    color: hsla(360, 10%, 10%, 0.9);
+}
+
+.menu-link:hover{
+    color: hsla(360, 10%, 10%, 0.5);
+}
