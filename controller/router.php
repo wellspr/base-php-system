@@ -166,6 +166,135 @@ $app -> setRoute("/admin/:id", function($req, $res) {
 
 });
 
+$app -> setRoute("/admin/:id1/:id2", function($req, $res) {
+
+    $id1 = $req -> params('id1');
+    $id2 = $req -> params('id2');
+
+    // Verify route
+    if ($id1==='user') {
+
+        // Verify user is Loggedin AND is administrator
+        if (isset($_SESSION['id'])&&$_SESSION['username']==='admin') {
+            // Admin acess for system users
+
+            if ($id2==='find-one'){
+
+                $res -> render("views", [
+                    'title' => 'Admin',
+                    'contentDirectory' => "admin/user",
+                    'contentFileName' => "find-one"
+                ]);
+
+            } else if ($id2==='find-many'){
+
+                $res -> render("views", [
+                    'title' => 'Admin',
+                    'contentDirectory' => "admin/user",
+                    'contentFileName' => "find-many"
+                ]);
+
+            } else if ($id2==='manage'){
+
+                $res -> render("views", [
+                    'title' => 'Admin',
+                    'contentDirectory' => "admin/user",
+                    'contentFileName' => "manage"
+                ]);
+
+            } else if ($id2==='list') {
+
+                $res -> render("views", [
+                    'title' => 'DB test Classes',
+                    'contentDirectory' => "admin/user",
+                    'contentFileName' => "list"
+                ]);
+
+            }
+
+        } else {
+            // Anauthorized user
+            $res->render("views", [
+                'title' => 'Admin',
+                'contentDirectory' => "admin",
+                'contentFileName' => "anauthorized"
+            ]);
+
+        }
+
+    } else if ($id1==='db'){
+
+        // Rotas para testes no MongoDB (DB Access testing)
+
+        // Verify user is Loggedin AND is administrator
+        if (isset($_SESSION['id'])&&$_SESSION['username']==='admin') {
+            // Admin acess for
+
+            // $app -> setRoute("/db/:id1", function($req, $res) {
+            //
+            //     $id1 = $req->params("id1");
+
+            // Access to /db
+            if ($id2==='connect') {
+
+                $res -> render("views", [
+                    'title' => 'DB Connection',
+                    'contentDirectory' => "admin/db",
+                    'contentFileName' => "connect"
+                ]);
+
+            } else if ($id2==='testClasses') {
+
+                $res -> render("views", [
+                    'title' => 'DB test Classes',
+                    'contentDirectory' => "admin/db",
+                    'contentFileName' => "testClasses"
+                ]);
+
+            }
+
+        }
+
+        // $app -> setRoute("/db/:id1/:id2", function($req, $res) {
+        //
+        //     $id1 = $req->params("id1");
+        //     $id2 = $req->params("id2");
+        //
+        //     // Access to /db
+        //     if ($id1==='connect'&&$id2==='') {
+        //
+        //         $res -> redirect("/db/connect");
+        //
+        //     } else if ($id1==='testClasses'&&$id2==='') {
+        //
+        //         $res -> redirect("/db/testClasses");
+        //
+        //     }
+        //     // Access to /db/user
+        //     if ($id1==='user'&&$id2==='readOne') {
+        //
+        //         $res -> render("views", [
+        //             'title' => 'Read User Info',
+        //             'contentDirectory' => "content/db/user",
+        //             'contentFileName' => "readOne"
+        //         ]);
+        //
+        //     } else if ($id1==='user'&&$id2==='readMany') {
+        //
+        //         $res -> render("views", [
+        //             'title' => 'Read User Info',
+        //             'contentDirectory' => "content/db/user",
+        //             'contentFileName' => "readMany"
+        //         ]);
+        //
+        //     }
+        //
+        // });
+
+    }
+
+});
+
 
 // Rotas para tratamento de autorização de acesso
 $app -> setRoute("/:id", function($req, $res) {
@@ -273,78 +402,6 @@ $app -> setRoute("/http/:id", function($req, $res) {
 
 });
 
-// Rotas para testes no MongoDB
-
-// DB Access testing
-$app -> setRoute("/db-access", function($req, $res) {
-    $res -> render("views", [
-        'title' => 'Home',
-        'contentDirectory' => "content/db/user",
-        'contentFileName' => "dbAccess"
-    ]);
-});
-
-
-$app -> setRoute("/db/:id1", function($req, $res) {
-
-    $id1 = $req->params("id1");
-
-    // Access to /db
-    if ($id1==='connect') {
-
-            $res -> render("views", [
-                'title' => 'DB Connection',
-                'contentDirectory' => "content/db",
-                'contentFileName' => "connect"
-            ]);
-
-    } else if ($id1==='testClasses') {
-
-        $res -> render("views", [
-            'title' => 'DB test Classes',
-            'contentDirectory' => "content/db",
-            'contentFileName' => "testClasses"
-        ]);
-
-    }
-
-});
-
-$app -> setRoute("/db/:id1/:id2", function($req, $res) {
-
-    $id1 = $req->params("id1");
-    $id2 = $req->params("id2");
-
-    // Access to /db
-    if ($id1==='connect'&&$id2==='') {
-
-        $res -> redirect("/db/connect");
-
-    } else if ($id1==='testClasses'&&$id2==='') {
-
-        $res -> redirect("/db/testClasses");
-
-    }
-    // Access to /db/user
-    if ($id1==='user'&&$id2==='readOne') {
-
-        $res -> render("views", [
-            'title' => 'Read User Info',
-            'contentDirectory' => "content/db/user",
-            'contentFileName' => "readOne"
-        ]);
-
-    } else if ($id1==='user'&&$id2==='readMany') {
-
-        $res -> render("views", [
-            'title' => 'Read User Info',
-            'contentDirectory' => "content/db/user",
-            'contentFileName' => "readMany"
-        ]);
-
-    }
-
-});
 
 // Info about password hashing
 $app->setRoute("/passwordHash", function($req, $res) {

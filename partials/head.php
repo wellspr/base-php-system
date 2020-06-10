@@ -9,12 +9,16 @@
 
 <!-- CSS -->
 <!-- <link rel="stylesheet" href="../resources/css/normalize.css"> -->
-<link rel="stylesheet" href="../resources/css/main.css">
-<link rel="stylesheet" href="../resources/css/menu.css">
-<link rel="stylesheet" href="../resources/css/login.css">
-<link rel="stylesheet" href="../resources/css/login-box.css">
-<link rel="stylesheet" href="../resources/css/home.css">
-<link rel="stylesheet" href="../resources/css/fonts.css">
-<link rel="stylesheet" href="../resources/css/footer.css">
 
-<title><?php echo $title?></title>
+<?php $base_dir = "https://" . $_SERVER["HTTP_HOST"] ?>
+
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/main.css">
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/menu.css">
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/admin-menu.css">
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/login.css">
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/login-box.css">
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/home.css">
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/fonts.css">
+<link rel="stylesheet" href="<?=$base_dir ?>/../resources/css/footer.css">
+
+<title><?=$title?></title>

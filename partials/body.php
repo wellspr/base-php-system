@@ -9,6 +9,7 @@
                 include_once($_SERVER['DOCUMENT_ROOT'] . "/menu/menu.php");
             ?>
         </nav>
+
     </header>
 
     <main class="main-container">

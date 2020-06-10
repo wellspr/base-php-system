@@ -1,3 +1,7 @@
+<p>Find many</p>
+
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/admin/menu.php"); ?>
+
 <?php
 
 use DB\Access as Access;
@@ -13,28 +17,20 @@ $accessUri = Access :: clusterAccessUri();
 $user = new User($accessUri);
 $user->define();
 
-if ($_SERVER['REQUEST_METHOD']==='POST') {
+// if ($_SERVER['REQUEST_METHOD']==='POST') {
 
-    if($_POST['username']){
-
-        $username = $_POST['username'];
-        $filter = ['username' => $username];
-
-    } else {
-
-        $filter = [];
-
-    }
+    $filter = [];
 
     $options = [];
 
     $foundUsers = $user->read($filter, $options);
 
-// Prints the user info
+    // var_dump($foundUsers);
+
     if ($foundUsers) {
 
         displayObject($foundUsers);
 
     }
 
-}
+// }

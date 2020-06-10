@@ -3,16 +3,11 @@
 use DB\Access as Access;
 use User\User as User;
 
-/*  include functions:
-*   Incluindo o arquivo functions.php
-*   Função utilizada: displayArray
-*/
-include $_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php";
-
 $accessUri = Access :: clusterAccessUri();
 $user = new User($accessUri);
 $user->define();
 
+// Receive a POST request for given "username"
 if ($_SERVER['REQUEST_METHOD']==='POST') {
 
     if($_POST['username']){
@@ -28,13 +23,13 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
 
     $options = [];
 
-    $foundUsers = $user->read($filter, $options);
+    $users = $user -> read($filter, $options);
 
-// Prints the user info
-    if ($foundUsers) {
+} else {
 
-        displayObject($foundUsers);
-
-    }
+    // Without a POST request 
+    $filter = [];
+    $options = [];
+    $users = $user -> read($filter, $options);
 
 }

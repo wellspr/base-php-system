@@ -1,0 +1,45 @@
+/* All admin containers */
+.db-container{
+    padding: 5%;
+}
+
+/* Admin Menu  */
+.admin-menu{
+    padding: 10px 0;
+}
+
+.admin-menu a{
+    padding-right: 20px;
+    text-decoration: none;
+    color: hsla(360, 10%, 10%, 1);
+}
+
+.admin-menu a:hover{
+    color: hsla(360, 10%, 10%, 0.7);
+}
+
+/* Styling data recovered from server */
+.data ul{
+    font-weight: bold;
+    list-style: none;
+    padding: 10px 0;
+}
+
+.data ul > ul{
+    border: solid 1px hsla(360, 10%, 10%, 0.8);
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.editable{
+    color: hsla(360, 10%, 10%, 0.7);
+}
+
+/* Styling for admin/panal (admin home page) */
+.admin-panel{
+    padding: 20px 0;
+}
+
+.panel-item{
+    padding: 10px 0;
+}

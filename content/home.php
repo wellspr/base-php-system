@@ -4,10 +4,6 @@
 
     <?php
 
-    echo $_SERVER['DOCUMENT_ROOT'] . '/' . $_SERVER['SERVER_NAME'];
-
-    print_r($_SESSION);
-
     if (isset($_SESSION['id'])) {
 
         echo "<h2>Welcome " . $_SESSION['name'] . "! </h2>";
