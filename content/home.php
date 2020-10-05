@@ -4,20 +4,32 @@
 
     <?php
 
-    if (isset($_SESSION['id'])) {
 
-        echo "<h2>Welcome " . $_SESSION['name'] . "! </h2>";
+    if (!isset($_SESSION['id'])) {
 
-    } else {
-
-        // echo <<<EXCERPT
         echo "<h2>Welcome user!</h2>";
 
         echo "<p>Faça <a href='/login'>login</a> para acessar sua conta ou <a href='/user/register'>crie uma nova conta</a></p>";
-        // EXCERPT;
+
+    } else {
+
+        echo "<h2>Welcome " . $_SESSION['name'] . "! </h2>";
+
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/content/user/profile_short.php";
+
     }
 
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/content/user/profile_short.php";
+
+    echo "<br>";
+    echo "<p>";
+        print_r($_SESSION);
+        echo "<br>";
+    echo "</p>";
+
+    echo "<p>";
+        echo "PHPSID: " . session_id();
+    echo "</p>";
+    echo "<br>";
 
     ?>
 

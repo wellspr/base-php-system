@@ -1,6 +1,6 @@
 <?php
 
-// CRUD Operations for User data
+// CRUD Operations for creating documents / sending data to the database
 
 namespace DB;
 
@@ -22,7 +22,7 @@ class Document extends Collection
     }
 
 
-    // Create User (C)
+    // Create Document (C)
     public function create($document, bool $many=false)
     {
         $collection = $this->getCollection($this->getCollectionName());
@@ -44,7 +44,7 @@ class Document extends Collection
     }
 
 
-    // Read User (R)
+    // Read Document (R)
     public function readOne($query)
     {
         $collection = $this->getCollection($this->getCollectionName());
@@ -104,7 +104,7 @@ class Document extends Collection
     }
 
 
-    // Update User(U)
+    // Update Document(U)
     public function update($filter, $options, $many=false)
     {
         $collection = $this->getCollection($this->getCollectionName());
@@ -129,7 +129,7 @@ class Document extends Collection
     }
 
 
-    // Delete User(D)
+    // Delete Document(D)
     public function delete($query, $many=false)
     {
         $collection = $this->getCollection($this->getCollectionName());
