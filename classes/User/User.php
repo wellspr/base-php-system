@@ -57,6 +57,35 @@ class User extends Document
 
     }
 
+
+    public function email_exists(string $email){
+
+        $filter = ['email' => $email];
+        $options = [];
+        $results = $this->read($filter, $options);
+
+        foreach ($results as $row) {
+            $foundEmail = $row->email;
+            return $foundEmail;
+        }
+
+    }
+
+
+    public function username_exists(string $username){
+
+        $filter = ['username' => $username];
+        $options = [];
+        $results = $this->read($filter, $options);
+
+        foreach ($results as $row) {
+            $foundUsername = $row->username;
+            return $foundUsername;
+        }
+
+    }
+
+
     // Verify if user has a Google Id registered in database
     public function hasGoogleID(string $googleID)
     {

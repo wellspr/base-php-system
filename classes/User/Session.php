@@ -1,5 +1,10 @@
 <?php
 
+/*
+    Creates a new session for user,
+    based on the user's data.
+*/
+
 namespace User;
 
 class Session
@@ -23,8 +28,12 @@ class Session
         foreach ($data as $user) {
             $firstName = $user->name->firstName;
             $lastName = $user->name->lastName;
-            $username = $user->account->username;
-            $email = $user->account->email;
+            $username = $user->username;
+            if(isset($user->email)){
+                $email = $user->email;
+            } else{
+                $email = $user->account->email;
+            }
             $id = $user->_id;
         }
 

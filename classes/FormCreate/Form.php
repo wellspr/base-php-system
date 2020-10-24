@@ -157,10 +157,11 @@ class Form
 
             foreach ($fieldsArray as $row) {
 
-                $form.= '<label for="' . $row['name'] . '"> ' . $row['label'] . ' </label>';
+                $form.= '<label> ' . $row['label'];
 
                 $form.= '<input type="' . $row['type'] . '" name="' . $row['name'] . '" placeholder="' . $row['placeholder'] . '" value="' . $row['value'] . '" '. (isset($row['disabled'])?($row['disabled']?"disabled":""):"") . '>';
 
+                '</label>';
             }
 
             $form.= '</div>';

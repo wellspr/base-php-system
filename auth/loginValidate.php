@@ -1,6 +1,5 @@
 <?php
 
-
 use DB\Access as Access;
 use User\User as User;
 use User\Session as Session;

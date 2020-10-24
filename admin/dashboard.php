@@ -1,11 +1,8 @@
 <div class="db-container">
 
-    <?php include("menu.php"); ?>
-
-    <h1>Painel</h1>
+    <h1>Dashboard</h1>
 
     <div class="admin-panel">
-
 
     <?php
 

@@ -8,29 +8,25 @@ $accessUri = Access :: clusterAccessUri();
 $user = new User($accessUri);
 $user->define();
 
-if ($_SERVER['REQUEST_METHOD']==='POST') {
+if($_SERVER["REQUEST_METHOD"]=="POST"){
 
-    $id  = $_POST['id'];
-    $username  = $_POST['username'];
-    $password  = $_POST['password'];
-    $email  = $_POST['email'];
+    // // Get the user's ID'
+    $id = $_POST["id"];
 
-    // Encrypt password
-    $crypt = new Crypt();
-    $password = $crypt->encrypt($password);
+    // Get the value of password
+    $email = $_POST["email"];
 
     $query = ['_id' => $user->sendIdToServer($id)];
 
     $options = ['$set' => [
-        'account' => [
-            'username' => $username,
-            'email' => $email,
-            'password' => $password
-        ]
-    ]
-];
 
-$updateResult = $user->update($query, $options);
+            'email' => $email
+
+        ]
+
+    ];
+
+    $updateResult = $user->update($query, $options);
 
     if ($updateResult[0]===1&&$updateResult[1]===1) {
 

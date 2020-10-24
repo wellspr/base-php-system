@@ -13,23 +13,46 @@
 
     } else {
 
-        echo "<h2>Welcome " . $_SESSION['name'] . "! </h2>";
+        if ($_SESSION['username'] === 'admin'){
 
-        include_once $_SERVER['DOCUMENT_ROOT'] . "/content/user/profile_short.php";
+            echo "<br>";
+            echo "<hr>";
+
+            include_once $_SERVER['DOCUMENT_ROOT'] . "/content/user/profile_short.php";
+
+            echo "<hr>";
+            echo "<br>";
+            echo "<p>";
+                print_r($_SESSION);
+                echo "<br>";
+            echo "</p>";
+
+            echo "<p>";
+                echo "PHPSID: " . session_id();
+            echo "</p>";
+            echo "<br>";
+
+        } else {
+
+            echo "<h2>Welcome " . $_SESSION['name'] . "! </h2>";
+
+            include_once $_SERVER['DOCUMENT_ROOT'] . "/content/user/profile_short.php";
+
+            echo "<hr>";
+            echo "<br>";
+            echo "<p>";
+                print_r($_SESSION);
+                echo "<br>";
+            echo "</p>";
+
+            echo "<p>";
+                echo "PHPSID: " . session_id();
+            echo "</p>";
+            echo "<br>";
+
+        }
 
     }
-
-
-    echo "<br>";
-    echo "<p>";
-        print_r($_SESSION);
-        echo "<br>";
-    echo "</p>";
-
-    echo "<p>";
-        echo "PHPSID: " . session_id();
-    echo "</p>";
-    echo "<br>";
 
     ?>
 

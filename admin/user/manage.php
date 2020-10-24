@@ -2,8 +2,6 @@
 
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/admin/menu.php");
-
 use DB\Access as Access;
 use User\User as User;
 use HttpRequest\Http as Http;
@@ -33,7 +31,11 @@ foreach ($foundUsers as $row) {
 
     $id = $row->_id;
     if (isset($row->username)) {$username = $row->username;}
-    if (isset($row->account->email)) {$email = $row->account->email;}
+    if (isset($row->email)) {
+        $email = $row->email;
+    }else {
+        $email = $row->account->email;
+    }
 
     $user = [];
 
@@ -66,19 +68,25 @@ foreach ($users as $user) {
     <input type='button' name='showDetails' value='Ver Detalhes'></form>";
     echo "</td>";
 
-    echo "<td>"; // Edit user account
-    echo "<form action='/user/edit' method='post'>
+    echo "<td>"; // Edit user Adress
+    echo "<form action='/user/editAdress' method='post'>
     <input type='hidden' name='id' value='" . $user['id'] . "'>
     <input type='hidden' name='username' value='" . $user['username'] . "'>
-    <input type='submit' name='update' value='Editar Cadastro'></form>";
+    <input type='submit' name='updateAdress' value='Editar Endereço'></form>";
+    echo "</td>";
+
+    echo "<td>"; // Edit user Name - FirstName / lastName
+    echo "<form action='/user/editName' method='post'>
+    <input type='hidden' name='id' value='" . $user['id'] . "'>
+    <input type='hidden' name='username' value='" . $user['username'] . "'>
+    <input type='submit' name='updateName' value='Editar Nome'></form>";
     echo "</td>";
 
     echo "<td>"; // Change user's password
     echo "<form action='/user/editPassword' method='post'>
     <input type='hidden' name='id' value='" . $user['id'] . "'>
     <input type='hidden' name='username' value='" . $user['username'] . "'>
-    <input type='hidden' name='email' value='" . $user['email'] . "'>
-    <input type='submit' name='changePassword' value='Alterar Senha'></form>";
+    <input type='submit' name='updatePassword' value='Alterar Senha'></form>";
     echo "</td>";
 
     echo "<td>"; // Change user's email

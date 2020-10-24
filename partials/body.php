@@ -13,12 +13,31 @@
     </header>
 
     <main class="main-container">
+
         <?php
+
+            $uri = $_SERVER['REQUEST_URI'];
+
             $file = $contentDirectory . "/" . $contentFileName . ".php";
+
             if (file_exists($file)) {
-                include_once $file;
+
+                if(isset($_SESSION['id']) && $_SESSION["username"]=="admin" && $uri != "/"){
+
+                    include_once($_SERVER['DOCUMENT_ROOT'] . "/admin/menu.php");
+
+                    include_once $file;
+
+                } else {
+
+                    include_once $file;
+
+                }
+
             }
+
         ?>
+
     </main>
 
     <footer class="footer-container">

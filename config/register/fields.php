@@ -2,6 +2,34 @@
 
 $fields = [
 
+    'Dados de Login' => [
+
+        'username' => [
+            'label' => 'Username',
+            'type' => 'text',
+            'name' => 'username',
+            'placeholder' => 'Username',
+            'value' => '',
+            // 'disabled' => false
+        ],
+
+        'email' => [
+            'label' => 'Email',
+            'type' => 'email',
+            'name' => 'email',
+            'placeholder' => 'Email',
+            'value' => '',
+        ],
+
+        'password' => [
+            'label' => 'Password',
+            'type' => 'password',
+            'name' => 'password',
+            'placeholder' => 'Informe uma senha',
+            'value' => ''
+        ]
+    ],
+
     'Nome' => [
         'firstName' => [
             'label' => 'Nome',
@@ -105,31 +133,4 @@ $fields = [
         ]
     ],
 
-    'Dados de Login' => [
-
-        'username' => [
-            'label' => 'Username',
-            'type' => 'text',
-            'name' => 'username',
-            'placeholder' => 'Username',
-            'value' => '',
-            'disabled' => false
-        ],
-
-        'email' => [
-            'label' => 'Email',
-            'type' => 'email',
-            'name' => 'email',
-            'placeholder' => 'Email',
-            'value' => '',
-        ],
-
-        'password' => [
-            'label' => 'Senha',
-            'type' => 'password',
-            'name' => 'password',
-            'placeholder' => 'Informe uma senha',
-            'value' => ''
-        ]
-    ]
 ];

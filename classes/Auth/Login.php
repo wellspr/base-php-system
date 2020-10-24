@@ -56,7 +56,7 @@ class Login extends Encrypt
 
         foreach ($result as $row) {
 
-            $passwordServer = $row->account->password;
+            $passwordServer = $row->password;
 
             if ($this->verify($passwordInformed, $passwordServer)) {
 

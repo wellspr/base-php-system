@@ -2,7 +2,7 @@
 
 <?php
 
-    /* If there's no logged in user
+    /* User not logged in
     *  Show Login and Register
     */
     if (!isset($_SESSION['id'])) {
@@ -11,28 +11,36 @@
 
         <a class="menu-link" href="/login">Login</a>
 
-        <a class="menu-link" href="/user/register">Registrar</a>
+        <a class="menu-link" href="/register">Registrar</a>
 
 EXCERPT;
 
     }
-    // Show more options for user admin
+    // User logged in
     else {
 
+        echo <<<here
+
+        <a class="menu-link" href="/sites">Sites</a>
+
+here;
+
+
+        // If user is admin -> Show admin options
         if ($_SESSION['username']==='admin') {
 
             echo <<<EXCERPT
 
-            <a class="menu-link"href="/admin/panel">Painel</a>
+            <a class="menu-link"href="/admin/dashboard">Dashboard</a>
 
-            <a class="menu-link"href="/user/register">Registrar Usuário</a>
+            <a class="menu-link"href="/register">Registrar</a>
 
             <a class="menu-link"href="/user/profile">Perfil</a>
 
 EXCERPT;
 
         }
-        // Show profile for normal users
+        // If user is a normal user
          else {
 
             echo <<<EXCERPT

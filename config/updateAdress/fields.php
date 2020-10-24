@@ -5,27 +5,9 @@ $fields = [
     'ID' => [
         'id' => [
             'label' => '',
-            'type' => 'text',
+            'type' => 'hidden',
             'name' => 'id',
             'placeholder' => '',
-            'value' => ''
-        ]
-    ],
-
-    'Nome' => [
-        'firstName' => [
-            'label' => 'Nome',
-            'type' => 'text',
-            'name' => 'firstName',
-            'placeholder' => 'Informe seu primeiro nome',
-            'value' => ''
-        ],
-
-        'lastName' => [
-            'label' => 'Sobrenome',
-            'type' => 'text',
-            'name' => 'lastName',
-            'placeholder' => 'Informe seu sobrenome',
             'value' => ''
         ]
     ],
@@ -95,25 +77,5 @@ $fields = [
             'value' => ''
         ]
     ],
-
-    'Telefones' => [
-
-        'telResidencial' => [
-            'label' => 'Telefone Residencial',
-            'type' => 'tel',
-            'name' => 'telResidencial',
-            'placeholder' => 'Telefone Residencial',
-            'value' => ''
-        ],
-
-        'telCelular' => [
-            'label' => 'Telefone Celular',
-            'type' => 'tel',
-            'name' => 'telCelular',
-            'placeholder' => 'Telefone Celular',
-            'value' => ''
-        ]
-
-    ]
 
 ];

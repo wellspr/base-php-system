@@ -1,27 +1,42 @@
 <?php
-use FormCreate\Form as Form;
+
 use DB\Access as Access;
 use User\User as User;
-use Crypto\Encrypt as Crypt;
 
-$register = new Form();
 $accessUri = Access :: clusterAccessUri();
 $newUser = new User($accessUri);
 $newUser->define();
 
-if($_SERVER['REQUEST_METHOD']==='POST'){
+if ($_SERVER['REQUEST_METHOD']==='POST') {
 
-    foreach ($_POST as $key => $value) {
-        ${$key} = $register->clean($_POST[$key]);
-    }
+    $firstName = $_POST['name'];
+    $lastName = '';
+    $street = '';
+    $number = '';
+    $complement = '';
+    $bairro = '';
+    $zip = '';
+    $city = '';
+    $state = '';
+    $country = '';
+    $telResidencial = '';
+    $telCelular = '';
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = '';
+    $googleID = $_POST['googleID'];
 
-    // Encrypt password
-    $crypt = new Crypt();
-    $password = $crypt->encrypt($password);
+    $creationDate = date("Y-m-d");
+    $creationTime = date("h-m-sa");
+
 
     $user = [
 
+        'creationDate' => $creationDate,
+        'creationTime' => $creationTime,
+
         'username' => $username,
+        'googleID' => $googleID,
 
         'name' => [
             'firstName' => $firstName,
@@ -47,29 +62,22 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
         'account' => [
             'username' => $username,
             'email' => $email,
-            'password' => $password
+            'password' => $password,
         ]
 
     ];
 
-    $newUser->create($user);
+    $result = $newUser->create($user);
+
+    if ($result===1) {
+
+        echo "Usuário criado com sucesso!";
+
+    } else {
+
+        echo "Ocorreu um erro";
+
+    }
+
 
 }
-
-$register->setFormTitle('Register');
-$register->setActionURL("/user/register");
-$register->setCSS('/resources/css/forms.css');
-
-$pathToRegisterFields = $_SERVER['DOCUMENT_ROOT'] . "/config/register/fields.php";
-include($pathToRegisterFields);
-
-$register->setFields($fields);
-
-$pathToRegisterButtons = $_SERVER['DOCUMENT_ROOT'] . "/config/register/buttons.php";
-include($pathToRegisterButtons);
-
-$register->setButtons($buttons);
-
-$register->create();
-
-?>

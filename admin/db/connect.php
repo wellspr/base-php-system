@@ -1,71 +1,62 @@
-<h1>DB Connection</h1>
+<h1>Database Connection</h1>
+
+<hr>
+
+<p>PHP MongoDB database connection reference: </p>
+<a href="https://docs.mongodb.com/php-library/master/reference/" target="_blank">https://docs.mongodb.com/php-library/master/reference/</a>
+
+<p>PHP MongoDB CRUD operations manuals</p>
+<a href="https://docs.mongodb.com/php-library/current/tutorial/crud/" target="_blank">https://docs.mongodb.com/php-library/current/tutorial/crud/</a>
+
+<p>University MongoDB</p>
+<a href="https://university.mongodb.com/" target="_blank">https://university.mongodb.com/</a>
 
 <?php
 
-use DB\Connect as Db;
-use DB\Access as Access;
+$username = "admin-wells";
+$password = "teste123";
+$clusterAdress = "cluster0-etjm8.mongodb.net";
+$databaseName = "test";
 
-$accessData = Access :: clusterAccessData();
-$accessUri = Access :: clusterAccessUri();
+// Create connection
+$connect = new MongoDB\Client(
+    'mongodb+srv://'. $username .':'. $password .'@'. $clusterAdress .'/'. $databaseName .'?retryWrites=true&w=majority'
+);
 
-$clusterDB = new Db($accessUri);
+echo <<<HERE
 
-// Print the database access uri
-echo "<h2>Access URI</h2>";
-echo "<p>";
-print_r($accessUri);
-echo "</p>";
-echo "<br>";
-echo "<hr>";
+    <h2>Databases on Server: </h2>
 
-// Get collection
-$connection = $clusterDB->connect();
-echo '<h2>$connection = $clusterDB->connect();</h2>';
-print_r($connection);
-echo "<br><br>";
-echo "<hr>";
+HERE;
 
-// Get client
-$client = $clusterDB->client();
-echo '<h2>$client = $clusterDB->client();</h2>';
-print_r($client);
-echo "<br><br>";
-echo "<hr>";
+// List all databases with method listDatabases()
+$databases = $connect->listDatabases();
 
-// Get the database name as a String, directly from the class 'Access';
-$dbName = $accessData['databaseName'];
-echo "<h2>Database selected by defalt: ";
-print_r($dbName);
-echo "</h2>";
-echo "<br>";
-echo "<hr>";
+foreach ($databases as $database) {
+    echo $database["name"];
+    echo "<br>";
+}
 
-// Select database
-$db = $client->$dbName;
-echo '<h2>$db = $client->$dbName; </h2>';
-echo "Print database: <br>" ;
-print_r($db);
-echo "<br><br>";
+echo "<hr><br><br>";
+
+// Database (The database is chosen at the connection)
+$db = $connect->$databaseName;
 var_dump($db);
 echo "<br><br>";
-echo "<hr>";
 
-// Here we choose the collection from database(in this case is 'users');
+// Collection -> Each database has one or more collections
 $collection = $db->users;
-echo '<h2>$collection = $client->test->users; </h2>';
-print_r($collection);
-echo "<br><br>";
-var_dump($collection);
-echo "<br><br>";
-echo "<hr>";
+/*  This collection could be named "users":
+    $users = $db->users;
+*/
 
-// Select database item
-$user = $collection->findOne(['username' => 'admin']);
-echo '<h2>$user = $collection->findOne(["username" => "admin"]); </h2>';
-echo "<p>Access database item:</p>";
-print_r($user);
-echo "<br><br>";
-var_dump($user);
-echo "<br><br>";
-echo "<hr>";
-echo "<br>";
+/*  A cursor helps to extract a document from the collection,
+    using a specific collection method, in this case, find;
+*/
+$cursor = $collection->find(['username' => 'pato']);
+// This cursor can be named "results", "foundUsers", etc
+
+// We could name the documents "user"
+foreach ($cursor as $document) {
+    var_dump($document);
+}

@@ -14,8 +14,6 @@ class Access
         $json_data = json_decode($json,true);
 
         // Define variables
-        $baseUri = $json_data["clusterBaseURI"];
-
         $username = $json_data["username"];
 
         $password = $json_data["password"];
@@ -25,7 +23,6 @@ class Access
         $databaseName = $json_data["databaseName"];
 
         $data = [
-            'baseUri' => $baseUri,
             'username' => $username,
             'password' => $password,
             'clusterAdress' => $clusterAdress,
@@ -41,7 +38,11 @@ class Access
         $data = self :: clusterAccessData();
 
         // Construct access url
-        $clusterAccess = "{$data['baseUri']}{$data['username']}:{$data['password']}@{$data['clusterAdress']}/{$data['databaseName']}";
+        $clusterAccess = "mongodb+srv://".
+        $data['username'] .  ":" .
+        $data['password'] . "@" .
+        $data['clusterAdress'] . "/" .
+        $data['databaseName'];
 
         return $clusterAccess;
     }

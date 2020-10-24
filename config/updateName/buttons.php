@@ -2,15 +2,14 @@
 
 $buttons = [
     [
-        'type' => 'button',
+        'type' => 'submit',
         'name' => 'submit',
-        'value' => 'Enviar'
+        'value' => 'Alterar'
     ],
 
     [
         'type' => 'button',
         'name' => 'cancel',
-        'value' => 'Cancelar'
+        'value' => 'Cancelar Edição'
     ]
-
 ];

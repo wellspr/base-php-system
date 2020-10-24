@@ -1,107 +1,44 @@
-<!--
-    Este arquivo é só um template, o formulário está
-    sendo gerado através da classe Form\Form.php
- -->
+<form class="forms" action="/user/create" method="post">
 
-<h1>Register</h1>
+    <div class="formfield">
 
-<link rel="stylesheet" href="/resources/css/forms.css">
-
-<form class="register" action="" name="register" method="post">
-
-    <label>Nome</label>
-
-        <div class="formfield">
-
-            <div class="formsubfield">
-                <label for="firstName">Nome: </label>
-                <input type="text" name="firstName" placeholder="Informe seu primeiro nome">
-                <label for="lastName">Sobrenome: </label>
-                <input type="text" name="lastName" placeholder="Informe seu sobrenome">
-            </div>
-
+        <div class="formsubfield">
+            <label for="usrname"> Username
+                <input type="text" id="usrname" name="username" placeholder="Username" required>
+            </label>
         </div>
 
-
-    <label>Endereço</label><br>
-
-        <div class="formfield">
-
-            <div class="formsubfield">
-                <label for="street">Logradouro</label>
-                <input type="text" name="street" placeholder="Logradouro">
-            </div>
-
-            <div class="formsubfield">
-                <label for="number">Número</label>
-                <input type="text" name="number" placeholder="Número">
-
-                <label for="complement">Complemento</label>
-                <input type="text" name="complement" placeholder="Complemento">
-            </div>
-
-            <div class="formsubfield">
-                <label for="bairro">Bairro</label>
-                <input type="text" name="bairro" placeholder="Bairro">
-
-                <label for="zip">Cep</label>
-                <input type="text" name="zip" placeholder="Cep">
-            </div>
-
-            <div class="formsubfield">
-                <label for="city">Cidade</label>
-                <input type="text" name="city" placeholder="Cidade">
-
-                <label for="state">Estado</label>
-                <input type="text" name="state" placeholder="Estado">
-
-                <label for="country">País</label>
-                <input type="text" name="country" placeholder="País">
-            </div>
-
+        <div class="formsubfield">
+            <label for="email"> Email
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </label>
         </div>
 
-
-    <label>Telefones</label>
-
-        <div class="formfield">
-
-            <div class="formsubfield">
-                <label for="telResidencial">Telefone Residencial</label>
-                <input type="tel" name="telResidencial" placeholder="Telefone Residencial">
-            </div>
-
-            <div class="formsubfield">
-                <label for="telCelular">Telefone Celular</label>
-                <input type="tel" name="telCelular" placeholder="Telefone Celular">
-            </div>
-
+        <div class="formsubfield">
+            <label for="passwd"> Password
+                <input type="password" id="passwd" name="password" placeholder="password" required>
+            </label>
         </div>
 
+    </div>
 
-    <label>Dados de login</label>
 
-        <div class="formfield">
+    <div class="formfield">
 
-            <div class="formsubfield">
-                <label for="username">Username</label><br>
-                <input type="text" name="username" placeholder="Username">
-            </div>
+        <div class="formsubfield">
+            <label for="firstName">Nome:
+                <input type="text" name="firstName" placeholder="Informe seu primeiro nome" required>
+            </label>
 
-            <div class="formsubfield">
-                <label for="email">Email</label><br>
-                <input type="email" name="email" placeholder="Email"><br>
-            </div>
-
-            <div class="formsubfield">
-                <label for="password">Password</label><br>
-                <input type="password" name="password" placeholder="password"><br>
-            </div>
-
+            <label for="lastName">Sobrenome:
+                <input type="text" name="lastName" placeholder="Informe seu sobrenome" required>
+            </label>
         </div>
 
-    <input type="submit" name="submit" value="Enviar">
-    <input type="reset" name="reset" value="Limpar">
+    </div>
 
+    <input type="submit" name="submit" value="Registrar">
+
+    <input type="submit" name="clear" value="Limpar">
 
 </form>

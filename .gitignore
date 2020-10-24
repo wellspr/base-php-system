@@ -1,2 +1,4 @@
-vendor
+/vendor
+composer-installer.sh
+composer.lock
 composer.phar
