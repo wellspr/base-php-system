@@ -9,118 +9,32 @@ class Route
     {
 
         $request_uri = $_SERVER['REQUEST_URI'];
+        $request = new Request($route, $request_uri);
+        $response = new Response();
 
-        $has_query = Request :: has_query($request_uri);
+        $my_route = Request :: paramsArray($route);
+        $my_request = Request :: paramsArray($request_uri);
 
-        if ($has_query) {
+        if ( sizeof($my_route) == sizeof($my_request) ) {
 
-            $url_components = Request :: get_url_components($request_uri);
-            $request_uri = $url_components['path'];
-
-            $a = Request :: paramsArray($route);
-            $b = Request :: paramsArray($request_uri);
-
-            if(sizeof($a)==sizeof($b)) {
-
-                $request = new Request($route, $request_uri);
-
-                if ($request -> paramsMatch()) {
-                    $route = $request_uri;
-                }
-
-                $response = new Response();
-
-                if ($request_uri==$route) {
-                    return $callback($request, $response);
-                }
-            }
-
-        } else {
-
-            $a = Request :: paramsArray($route);
-            $b = Request :: paramsArray($request_uri);
-
-            if(sizeof($a)==sizeof($b)) {
-
-                $request = new Request($route, $request_uri);
-                $response = new Response();
-
-                if (Request :: routeQueryNumber($route)===0) {
-
-                    if (sizeof($request->paramsMatch())>0) {
-
-                        if($a===$b){
-
-                            return $callback($request, $response);
-
-                        }
-
+            $n = 0;
+            $case1 = true;
+            $case2 = false;
+            foreach($my_route as $item) {
+                if ($item != $my_request[$n]) {
+                    $case1 = false;
+                    if (strpos($item, ":") === 0) {
+                        $case2 =true;
                     }
-
-                } else if (Request :: routeQueryNumber($route)>0) {
-
-                    if (sizeof($request->paramsMatch())===0) {
-
-                        $urlOk = false;
-                        $counter = 0;
-
-                        foreach ($a as $key => $value) {
-
-                            if(!(strpos($value, ":")===0)){
-
-                                $counter+=1;
-
-                            }
-
-                        }
-
-                        if ($counter===1) {
-
-                            return $callback($request, $response);
-
-                        }
-
-                    } else if (sizeof($request->paramsMatch())>0) {
-
-                        $urlOk = false;
-                        $counter = 0;
-                        $arrBool = [];
-
-                        foreach ($a as $key => $value) {
-
-                            if(!(strpos($value, ":")===0)){
-
-                                $counter+=1;
-                                if ($key>0&&$b[$key]===$value) {
-                                    $urlOk = true;
-                                    array_push($arrBool, $urlOk);
-                                } else if ($key>0&&$b[$key]!=$value){
-                                    $urlOk = false;
-                                    array_push($arrBool, $urlOk);
-                                }
-
-                            }
-
-                        }
-
-                        $isFalse = array_search("false", $arrBool);
-
-                        if($isFalse){
-                            $urlOk = false;
-                        }
-
-                        if ($urlOk===true&&$counter>1) {
-
-                            return $callback($request, $response);
-
-                        }
-
-                    }
-
                 }
-
+                $n++;
             }
-
+            if ($case1) {
+                return $callback($request, $response); 
+            } else if ($case2) {
+                return $callback($request, $response); 
+            }
+            
         }
 
     }

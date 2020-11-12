@@ -25,7 +25,7 @@ class Request
     {
         $a = self :: splitParams($this->route);
         $b = self :: splitParams($this->uri);
-        $matches = array_intersect($a, $b);
+        $matches = array_intersect_assoc($a, $b);
         return $matches;
     }
 
@@ -49,6 +49,7 @@ class Request
     public static function paramsArray($str)
     {
         $arr = explode("/", $str);
+        array_shift($arr);
         return $arr;
     }
 

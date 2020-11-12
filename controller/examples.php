@@ -34,6 +34,25 @@ $app -> setRoute("/:id1/:id2", function($req, $res) {
 });
 
 
+$app -> setRoute("/testes/:id1", function($req, $res){
+
+    $id1 = $req -> params('id1');
+
+    $res->send("Deu certo:" . '/testes/'. $id1);
+
+});
+
+
+$app -> setRoute("/testes/:id1/:id2", function($req, $res){
+
+    $id1 = $req -> params('id1');
+    $id2 = $req -> params('id2');
+
+    $res->send("Deu certo:" . '/testes/'. $id1 . "/" . $id2);
+
+});
+
+
 $app -> setRoute("/testes/:id1/case/:id2", function($req, $res){
 
     $id1 = $req -> params('id1');
