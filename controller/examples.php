@@ -66,7 +66,7 @@ $app -> setRoute("/testes/:id1/case/:id2", function($req, $res){
 });
 
 
-$app -> setRoute("/teste/:id1/:id2/:id3", function($req, $res){
+$app -> setRoute("/testes/:id1/:id2/:id3", function($req, $res){
 
     $id1 = $req -> params('id1');
     $id2 = $req -> params('id2');
